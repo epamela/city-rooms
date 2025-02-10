@@ -1,4 +1,4 @@
-enum Amenities {
+export enum Amenities {
   AIR_CONDITIONING_AND_HEATING = "Aire acondicionado y calefacción",
   FREE_PARKING = "Estacionamiento gratuito en las instalaciones",
   SECURITY_BOX = "Caja de seguridad",
