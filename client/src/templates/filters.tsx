@@ -178,6 +178,22 @@ export const Filters = ({
       <details className="overflow-hidden rounded-sm border border-gray-300 [&_summary::-webkit-details-marker]:hidden">
         <summary className="flex cursor-pointer items-center justify-between gap-2 bg-white p-4 text-gray-900 transition">
           <span className="text-sm font-medium">Amenidades</span>
+          <span className="transition group-open:-rotate-180">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </span>
         </summary>
 
         <div className="border-t border-gray-200 bg-white">
@@ -203,6 +219,22 @@ export const Filters = ({
           </div>
         </div>
       </details>
+
+      <div className="flex flex-col justify-center">
+        <button
+          onClick={() =>
+            onFilterChange({
+              priceMin: 0,
+              priceMax: 0,
+              rating: null,
+              amenities: [],
+            })
+          }
+          className=" bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500   text-white px-4 py-2 rounded-md w-full hover:cursor-pointer"
+        >
+          Limpiar todos los filtros
+        </button>
+      </div>
     </div>
   );
 };

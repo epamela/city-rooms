@@ -4,6 +4,10 @@
 
 **City Rooms** es una aplicación web que permite a los usuarios buscar y filtrar habitaciones disponibles en diferentes ciudades. La aplicación obtiene datos de Airbnb y proporciona una interfaz intuitiva para explorar opciones de alojamiento con diversos filtros como precio, calificación y amenidades.
 
+### Vista Previa
+
+![Vista Previa](./utils/preview.png)
+
 ## Estructura del Proyecto
 
 ```bash
@@ -22,32 +26,35 @@ city-rooms/
 │   ├── services/         # Lógica de negocio
 │   └── server.ts         # Punto de entrada del servidor
 └── package.json          # Configuración principal del proyecto
-
+```
 
 ## Instalación y Configuración
 
 1. Clona el repositorio:
 
-bash
+```bash
 git clone https://github.com/tu-usuario/city-rooms.git
 cd city-rooms
+```
 
 2. Instala las dependencias:
 
-bash
+```bash
 npm install
+```
 
 3. Inicia la aplicación en modo de desarrollo:
 
-bash
+```bash
 npm run dev
+```
 
 La aplicación estará disponible en:
-``
 
+```bash
 - Frontend: http://localhost:5173
 - Backend: http://localhost:3000
-  ``
+```
 
 ## Proceso de desarrollo
 
@@ -91,4 +98,5 @@ La prioridad se asignó basado en la dificultad de la tarea, y el tiempo que me 
 2. Mejorar la interfaz de usuario: añadir fotos de las ciudades para que sea más atractiva.
 
 3. Añadir un repositorio para poder fácilmente traer datos de los cuartos de una base de datos y/o de una API.
-```
+
+4. Mejorar la responsividad de la aplicación.

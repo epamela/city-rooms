@@ -57,26 +57,33 @@ export function SearchPlaces() {
   const NoRoomsCard = () => {
     return (
       <div className="flex justify-center items-center h-full rounded-lg p-4 w-full shadow-xs shadow-indigo-100 hover:shadow-indigo-200">
-        <p className="text-gray-500">No rooms found</p>
+        <p className="text-gray-500">
+          Todavía no encontramos alojamientos disponibles, pero{" "}
+          <a
+            href="https://www.reservamos.mx/"
+            target="_blank"
+            className="text-indigo-500 underline"
+          >
+            compra un boleto de autobús y descubre la ciudad.
+          </a>
+        </p>
       </div>
     );
   };
 
   return (
     <div>
-      {error && <div className="error">{error}</div>}
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
         <section className="w-full col-span-3 md:col-span-1 ">
           <div className="md:sticky md:top-50">
-            <div className="flex gap-5 justify-center mb-5 ">
+            <div className="flex w-full gap-5 justify-center mb-5 ">
               <SearchBar
                 value={query}
                 onChange={handleOnChange}
                 onKeyDown={handleKeyDown}
               />
               <Button onClick={handleSearch} disabled={loading}>
-                {loading ? "Searching..." : "Search"}
+                {loading ? "Buscando..." : "Buscar"}
               </Button>
             </div>
             <Filters
@@ -86,6 +93,15 @@ export function SearchPlaces() {
           </div>
         </section>
         <section className="w-full col-span-3 md:col-span-2">
+          {error && (
+            <div className="w-full flex flex-col justify-center align-middle text-center">
+              <h2 className="text-4xl">Oops!</h2>
+              <p className="text-gray-500">
+                Tuvimos un error, por favor intenta con otra búsqueda o
+                contáctanos si el problema persiste.
+              </p>
+            </div>
+          )}
           {results.map((cityRooms) => (
             <div className="mb-5" key={cityRooms.city.id}>
               <h2 className="text-2xl font-bold">{cityRooms.city.display}</h2>

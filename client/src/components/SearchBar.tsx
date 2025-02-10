@@ -8,17 +8,17 @@ export const SearchBar = ({
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }) => {
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <label htmlFor="Search" className="sr-only">
         {" "}
-        Search{" "}
+        Buscar{" "}
       </label>
 
       <input
         onKeyDown={onKeyDown}
         type="text"
         id="Search"
-        placeholder="Search for..."
+        placeholder="Busca una ciudad..."
         className="w-full rounded-md border-gray-200 py-2.5 px-5 pe-10 shadow-xs sm:text-sm"
         value={value}
         onChange={onChange}
@@ -26,7 +26,7 @@ export const SearchBar = ({
 
       <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
         <button type="button" className="text-gray-600 hover:text-gray-700">
-          <span className="sr-only">Search</span>
+          <span className="sr-only">Buscar</span>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -59,7 +59,7 @@ export const RoomCard = ({
           <div>
             <dt className="sr-only">Price</dt>
 
-            <dd className="text-sm text-gray-500">${price}/night</dd>
+            <dd className="text-sm text-gray-500">${price}/noche</dd>
           </div>
 
           <div>

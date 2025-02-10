@@ -17,15 +17,6 @@ export function RootLayout() {
                   alojamiento para tu próximo viaje
                 </p>
               </div>
-
-              <div className="flex items-center gap-4 w-full md:w-auto">
-                <button
-                  className="w-full md:w-auto inline-block rounded-sm bg-pink-500 px-5 py-3 text-sm font-medium text-white transition hover:bg-red-500 focus:ring-3 focus:outline-hidden"
-                  type="button"
-                >
-                  ¿Qué es esto?
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -35,7 +26,7 @@ export function RootLayout() {
         <Outlet />
       </main>
 
-      <footer className="main-footer w-full fixed bottom-0 left-0">
+      <footer className="main-footer w-full fixed bottom-0 left-0 bg-gray-50">
         <p>
           Made with ❤️ by <a href="https://github.com/epamela">Pamela</a>
         </p>
