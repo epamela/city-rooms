@@ -21,6 +21,7 @@ export class ApiPlaceRepository implements PlaceRepository {
           (place: Place) => place.result_type === "city"
         );
       }
+
       return placesToReturn;
     } catch (error) {
       console.error("Error fetching places from API:", error);
