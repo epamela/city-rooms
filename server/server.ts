@@ -1,18 +1,35 @@
 import express from "express";
-// O alternativamente: const express = require('express');
+import cors from "cors";
+
+import { roomRoutes } from "./routes/roomRoutes";
+import { placeRoutes } from "./routes/placeRoutes";
+import { CsvRoomRepository } from "./repositories/room/CsvRoomRepository";
+import { RoomService } from "./services/RoomService";
+import { PlaceService } from "./services/PlaceService";
+import { ApiPlaceRepository } from "./repositories/place/ApiPlaceRepository";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware para parsear JSON
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
+const roomRepository = new CsvRoomRepository();
+const roomService = new RoomService(roomRepository);
+
+const placeRepository = new ApiPlaceRepository();
+const placeService = new PlaceService(placeRepository, roomService);
+
+app.use("/api/rooms", roomRoutes(roomService));
+app.use("/api/places", placeRoutes(placeService));
+
 app.use(express.json());
 
-// Ruta de prueba
-app.get("/api", (req, res) => {
-  res.json({ message: "¡API funcionando!" });
-});
-
-// Iniciar el servidor
 app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
