@@ -3,6 +3,11 @@ import { PlaceRepository } from "../repositories/place/PlaceRepository";
 import { CityRooms } from "../interfaces/CityRooms";
 import { RoomService } from "./RoomService";
 
+interface IFilters {
+  priceMin: number;
+  priceMax: number;
+  rating: number;
+}
 export class PlaceService {
   constructor(
     private placeRepository: PlaceRepository,

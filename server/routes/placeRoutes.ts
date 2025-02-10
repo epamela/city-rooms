@@ -23,12 +23,20 @@ export function placeRoutes(placeService: PlaceService) {
 
   router.get("/stay", async (req, res) => {
     try {
-      const { q } = req.query;
+      const { q, priceMin, priceMax, rating } = req.query;
       if (!q) {
         return res
           .status(400)
           .json({ error: 'Query parameter "q" is required' });
       }
+
+      const filters = {
+        priceMin: priceMin ? Number(priceMin) : 0,
+        priceMax: priceMax ? Number(priceMax) : 0,
+        rating: rating ? Number(rating) : 0,
+      };
+
+      console.log("filters", filters);
 
       const cityRooms = await placeService.searchPlacesWithRooms(String(q));
       res.json(cityRooms);

@@ -5,7 +5,7 @@ export const Button = ({
 }: {
   children: React.ReactNode;
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 }) => {
   return (
     <a

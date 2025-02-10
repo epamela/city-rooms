@@ -3,12 +3,12 @@ import { api } from "../services/api";
 import { CityRooms } from "../interfaces/CityRooms";
 import { SearchBar } from "../components/SearchBar";
 import { Button } from "../components/Button";
-import { Filters } from "../templates/filters";
+import { Filters } from "../templates/Filters";
 import { RoomCard } from "../components/RoomCard";
 
 export interface IFilters {
-  priceMin: number | null;
-  priceMax: number | null;
+  priceMin: number;
+  priceMax: number;
   rating: number | null;
 }
 
@@ -19,7 +19,7 @@ export function SearchPlaces() {
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<IFilters>({
     priceMin: 0,
-    priceMax: null,
+    priceMax: 0,
     rating: 0,
   });
 
@@ -28,7 +28,7 @@ export function SearchPlaces() {
     setError(null);
 
     try {
-      const data = await api.searchPlaces(query);
+      const data = await api.searchPlaces(query, filters);
       setResults(data);
     } catch (err) {
       setError("Failed to search places");
@@ -36,6 +36,11 @@ export function SearchPlaces() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const onFiltersChange = (filters: IFilters) => {
+    setFilters(filters);
+    handleSearch();
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,18 +69,20 @@ export function SearchPlaces() {
       {error && <div className="error">{error}</div>}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 w-full">
-        <section className="w-full col-span-3 md:col-span-1">
-          <div className="flex gap-2 justify-center mb-5">
-            <SearchBar
-              value={query}
-              onChange={handleOnChange}
-              onKeyDown={handleKeyDown}
-            />
-            <Button onClick={handleSearch} disabled={loading}>
-              {loading ? "Searching..." : "Search"}
-            </Button>
+        <section className="w-full col-span-3 md:col-span-1 ">
+          <div className="md:sticky md:top-50">
+            <div className="flex gap-5 justify-center mb-5 ">
+              <SearchBar
+                value={query}
+                onChange={handleOnChange}
+                onKeyDown={handleKeyDown}
+              />
+              <Button onClick={handleSearch} disabled={loading}>
+                {loading ? "Searching..." : "Search"}
+              </Button>
+            </div>
+            <Filters filters={filters} onFilterChange={onFiltersChange} />
           </div>
-          <Filters filters={filters} onFilterChange={setFilters} />
         </section>
         <section className="w-full col-span-3 md:col-span-2">
           {results.map((cityRooms) => (

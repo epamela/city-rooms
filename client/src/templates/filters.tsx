@@ -19,7 +19,7 @@ export const Filters = ({
     <div className="space-y-2">
       <details className="overflow-hidden rounded-sm border border-gray-300 [&_summary::-webkit-details-marker]:hidden">
         <summary className="flex cursor-pointer items-center justify-between gap-2 bg-white p-4 text-gray-900 transition">
-          <span className="text-sm font-medium"> Rating </span>
+          <span className="text-sm font-medium"> Calificación </span>
 
           <span className="transition group-open:-rotate-180">
             <svg
@@ -46,7 +46,7 @@ export const Filters = ({
               type="button"
               className="text-sm text-gray-900 underline underline-offset-4"
             >
-              Reset
+              Limpiar
             </button>
           </header>
 
@@ -73,7 +73,7 @@ export const Filters = ({
 
       <details className="overflow-hidden rounded-sm border border-gray-300 [&_summary::-webkit-details-marker]:hidden">
         <summary className="flex cursor-pointer items-center justify-between gap-2 bg-white p-4 text-gray-900 transition">
-          <span className="text-sm font-medium"> Price </span>
+          <span className="text-sm font-medium"> Precio por noche </span>
 
           <span className="transition group-open:-rotate-180">
             <svg
@@ -97,12 +97,12 @@ export const Filters = ({
           <header className="flex items-center justify-between p-4">
             <button
               onClick={() =>
-                onFilterChange({ ...filters, priceMin: null, priceMax: null })
+                onFilterChange({ ...filters, priceMin: 0, priceMax: 0 })
               }
               type="button"
               className="text-sm text-gray-900 underline underline-offset-4"
             >
-              Reset
+              Limpiar
             </button>
           </header>
 
@@ -115,7 +115,7 @@ export const Filters = ({
                 <span className="text-sm text-gray-600">$</span>
 
                 <input
-                  value={filters.priceMin ?? undefined}
+                  value={filters.priceMin}
                   onChange={(e) =>
                     onFilterChange({
                       ...filters,
@@ -125,7 +125,7 @@ export const Filters = ({
                   type="number"
                   step={100}
                   id="FilterPriceFrom"
-                  placeholder="From"
+                  placeholder="Desde"
                   className="w-full rounded-md border-gray-200 shadow-xs sm:text-sm p-3"
                 />
               </label>
@@ -137,7 +137,7 @@ export const Filters = ({
                 <span className="text-sm text-gray-600">$</span>
 
                 <input
-                  value={filters.priceMax ?? undefined}
+                  value={filters.priceMax}
                   onChange={(e) =>
                     onFilterChange({
                       ...filters,
@@ -147,7 +147,7 @@ export const Filters = ({
                   type="number"
                   step={100}
                   id="FilterPriceTo"
-                  placeholder="To"
+                  placeholder="Hasta"
                   className="w-full rounded-md border-gray-200 shadow-xs sm:text-sm p-3"
                 />
               </label>
