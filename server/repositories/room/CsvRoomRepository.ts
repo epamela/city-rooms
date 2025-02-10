@@ -72,12 +72,27 @@ export class CsvRoomRepository implements RoomRepository {
   async findByCity(
     city: string,
     sortBy?: string,
-    orderBy?: string
+    orderBy?: string,
+    priceMin?: number,
+    priceMax?: number,
+    rating?: number
   ): Promise<Room[]> {
     const cityLower = city.toLowerCase();
-    const filtered = this.rooms.filter(
+    let rooms = this.rooms.filter(
       (room) => room.city.toLowerCase() === cityLower
     );
-    return this.sortRooms(filtered, sortBy, orderBy);
+
+    if (priceMin && priceMin > 0) {
+      rooms = rooms.filter((room) => room.price_per_night >= priceMin!);
+    }
+
+    if (priceMax && priceMax > 0) {
+      rooms = rooms.filter((room) => room.price_per_night <= priceMax!);
+    }
+
+    if (rating && rating > 0) {
+      rooms = rooms.filter((room) => room.rating_overall! >= rating!);
+    }
+    return this.sortRooms(rooms, sortBy, orderBy);
   }
 }

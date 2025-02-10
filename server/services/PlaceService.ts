@@ -21,12 +21,20 @@ export class PlaceService {
     return this.placeRepository.searchPlacesByQuery(query, onlyCities);
   }
 
-  async searchPlacesWithRooms(query: string): Promise<CityRooms[]> {
+  async searchPlacesWithRooms(
+    query: string,
+    priceMin: number,
+    priceMax: number,
+    rating: number
+  ): Promise<CityRooms[]> {
     const places = await this.placeRepository.searchPlacesByQuery(query, true);
 
     const cityRoomsPromises = places.map(async (place) => {
       const rooms = await this.roomService.searchRooms({
         city: place.city_name.toLowerCase(),
+        priceMin: priceMin,
+        priceMax: priceMax,
+        rating: rating,
       });
 
       const cityRooms: CityRooms = {

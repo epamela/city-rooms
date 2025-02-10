@@ -30,15 +30,12 @@ export function placeRoutes(placeService: PlaceService) {
           .json({ error: 'Query parameter "q" is required' });
       }
 
-      const filters = {
-        priceMin: priceMin ? Number(priceMin) : 0,
-        priceMax: priceMax ? Number(priceMax) : 0,
-        rating: rating ? Number(rating) : 0,
-      };
-
-      console.log("filters", filters);
-
-      const cityRooms = await placeService.searchPlacesWithRooms(String(q));
+      const cityRooms = await placeService.searchPlacesWithRooms(
+        String(q),
+        Number(priceMin),
+        Number(priceMax),
+        Number(rating)
+      );
       res.json(cityRooms);
     } catch (error) {
       console.error("Error searching places:", error);

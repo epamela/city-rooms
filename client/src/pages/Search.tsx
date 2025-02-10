@@ -38,11 +38,6 @@ export function SearchPlaces() {
     }
   };
 
-  const onFiltersChange = (filters: IFilters) => {
-    setFilters(filters);
-    handleSearch();
-  };
-
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === "") {
       setResults([]);
@@ -81,7 +76,10 @@ export function SearchPlaces() {
                 {loading ? "Searching..." : "Search"}
               </Button>
             </div>
-            <Filters filters={filters} onFilterChange={onFiltersChange} />
+            <Filters
+              filters={filters}
+              onFilterChange={(filters) => setFilters(filters)}
+            />
           </div>
         </section>
         <section className="w-full col-span-3 md:col-span-2">

@@ -8,8 +8,20 @@ export class RoomService {
     return this.roomRepository.getAll();
   }
 
-  async searchRooms(params: { city: string }): Promise<Room[]> {
-    const rooms = await this.roomRepository.findByCity(params.city);
+  async searchRooms(params: {
+    city: string;
+    priceMin?: number;
+    priceMax?: number;
+    rating?: number;
+  }): Promise<Room[]> {
+    const rooms = await this.roomRepository.findByCity(
+      params.city,
+      undefined,
+      undefined,
+      params.priceMin,
+      params.priceMax,
+      params.rating
+    );
     return rooms;
   }
 }
