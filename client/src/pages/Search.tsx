@@ -5,11 +5,13 @@ import { SearchBar } from "../components/SearchBar";
 import { Button } from "../components/Button";
 import { Filters } from "../templates/Filters";
 import { RoomCard } from "../components/RoomCard";
+import { Amenities } from "../interfaces/Room";
 
 export interface IFilters {
   priceMin: number;
   priceMax: number;
   rating: number | null;
+  amenities: Amenities[];
 }
 
 export function SearchPlaces() {
@@ -21,6 +23,7 @@ export function SearchPlaces() {
     priceMin: 0,
     priceMax: 0,
     rating: 0,
+    amenities: [],
   });
 
   const handleSearch = async () => {

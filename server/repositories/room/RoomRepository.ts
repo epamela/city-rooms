@@ -1,4 +1,4 @@
-import { Room } from "../../interfaces/Room";
+import { Amenities, Room } from "../../interfaces/Room";
 
 enum SortBy {
   ASC = "asc",
@@ -18,6 +18,7 @@ export interface RoomRepository {
     orderBy?: OrderBy,
     priceMin?: number,
     priceMax?: number,
-    rating?: number
+    rating?: number,
+    amenities?: Amenities[]
   ): Promise<Room[]>;
 }

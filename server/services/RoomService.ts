@@ -1,4 +1,4 @@
-import { Room } from "../interfaces/Room";
+import { Amenities, Room } from "../interfaces/Room";
 import { RoomRepository } from "../repositories/room/RoomRepository";
 
 export class RoomService {
@@ -13,6 +13,7 @@ export class RoomService {
     priceMin?: number;
     priceMax?: number;
     rating?: number;
+    amenities?: Amenities[];
   }): Promise<Room[]> {
     const rooms = await this.roomRepository.findByCity(
       params.city,
@@ -20,7 +21,8 @@ export class RoomService {
       undefined,
       params.priceMin,
       params.priceMax,
-      params.rating
+      params.rating,
+      params.amenities
     );
     return rooms;
   }

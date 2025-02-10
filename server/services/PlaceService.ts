@@ -2,6 +2,7 @@ import { Place } from "../interfaces/Place";
 import { PlaceRepository } from "../repositories/place/PlaceRepository";
 import { CityRooms } from "../interfaces/CityRooms";
 import { RoomService } from "./RoomService";
+import { Amenities } from "../interfaces/Room";
 
 interface IFilters {
   priceMin: number;
@@ -25,7 +26,8 @@ export class PlaceService {
     query: string,
     priceMin: number,
     priceMax: number,
-    rating: number
+    rating: number,
+    amenities: Amenities[]
   ): Promise<CityRooms[]> {
     const places = await this.placeRepository.searchPlacesByQuery(query, true);
 
@@ -35,6 +37,7 @@ export class PlaceService {
         priceMin: priceMin,
         priceMax: priceMax,
         rating: rating,
+        amenities: amenities,
       });
 
       const cityRooms: CityRooms = {

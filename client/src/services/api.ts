@@ -9,15 +9,16 @@ export const api = {
     query: string,
     filters: IFilters
   ): Promise<CityRooms[]> => {
-    console.log("query", query);
-    console.log("filters", filters);
-    const { priceMin, priceMax, rating } = filters;
+    const { priceMin, priceMax, rating, amenities } = filters;
+
+    console.log(amenities);
 
     const params = {
       q: query,
       priceMin: priceMin,
       priceMax: priceMax,
       rating: rating,
+      amenities: amenities,
     };
 
     if (query == "") return [];

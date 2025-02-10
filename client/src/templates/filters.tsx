@@ -1,5 +1,5 @@
 import { IFilters } from "../pages/Search";
-
+import { Amenities } from "../interfaces/Room";
 export const Filters = ({
   filters,
   onFilterChange,
@@ -13,6 +13,25 @@ export const Filters = ({
     3: "★★★☆☆",
     4: "★★★★☆",
     5: "★★★★★",
+  };
+
+  const amenities = Object.values(Amenities).map((amenity) => ({
+    label: amenity,
+    checked: filters.amenities.includes(amenity),
+  }));
+
+  const onAminityChange = (amenity: Amenities) => {
+    if (filters.amenities.includes(amenity)) {
+      onFilterChange({
+        ...filters,
+        amenities: filters.amenities.filter((a) => a !== amenity),
+      });
+    } else {
+      onFilterChange({
+        ...filters,
+        amenities: [...filters.amenities, amenity],
+      });
+    }
   };
 
   return (
@@ -152,6 +171,35 @@ export const Filters = ({
                 />
               </label>
             </div>
+          </div>
+        </div>
+      </details>
+
+      <details className="overflow-hidden rounded-sm border border-gray-300 [&_summary::-webkit-details-marker]:hidden">
+        <summary className="flex cursor-pointer items-center justify-between gap-2 bg-white p-4 text-gray-900 transition">
+          <span className="text-sm font-medium">Amenidades</span>
+        </summary>
+
+        <div className="border-t border-gray-200 bg-white">
+          <div className="p-4">
+            {amenities.map((amenity) => (
+              <div key={amenity.label} className="flex items-center gap-2">
+                <input
+                  className="size-5 rounded-sm border-gray-300"
+                  type="checkbox"
+                  id={amenity.label}
+                  checked={amenity.checked}
+                  onChange={() => onAminityChange(amenity.label)}
+                />
+
+                <label
+                  className="font-medium text-gray-700"
+                  htmlFor={amenity.label}
+                >
+                  {amenity.label}
+                </label>
+              </div>
+            ))}
           </div>
         </div>
       </details>

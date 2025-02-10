@@ -2,25 +2,27 @@
 
 ## Descripción del Proyecto
 
-City Rooms es una aplicación web que permite a los usuarios buscar y filtrar habitaciones disponibles en diferentes ciudades. La aplicación obtiene datos de Airbnb y proporciona una interfaz intuitiva para explorar opciones de alojamiento con diversos filtros como precio, calificación y amenidades.
+**City Rooms** es una aplicación web que permite a los usuarios buscar y filtrar habitaciones disponibles en diferentes ciudades. La aplicación obtiene datos de Airbnb y proporciona una interfaz intuitiva para explorar opciones de alojamiento con diversos filtros como precio, calificación y amenidades.
 
 ## Estructura del Proyecto
 
+```bash
 city-rooms/
-├── client/ # Frontend (React + Vite)
-│ ├── src/
-│ │ ├── components/ # Componentes React
-│ │ ├── interfaces/ # Definiciones de tipos TypeScript
-│ │ └── services/ # Servicios para llamadas API
-│ └── package.json
-├── server/ # Backend (Node.js + Express)
-│ ├── data/ # Datos CSV
-│ ├── interfaces/ # Interfaces compartidas
-│ ├── repositories/ # Capa de acceso a datos
-│ ├── routes/ # Rutas de la API
-│ ├── services/ # Lógica de negocio
-│ └── server.ts # Punto de entrada del servidor
-└── package.json # Configuración principal del proyecto
+├── client/               # Frontend (React + Vite)
+│   ├── src/
+│   │   ├── components/   # Componentes React
+│   │   ├── interfaces/   # Definiciones de tipos TypeScript
+│   │   └── services/     # Servicios para llamadas API
+│   └── package.json
+├── server/               # Backend (Node.js + Express)
+│   ├── data/             # Datos CSV
+│   ├── interfaces/       # Interfaces compartidas
+│   ├── repositories/     # Capa de acceso a datos
+│   ├── routes/           # Rutas de la API
+│   ├── services/         # Lógica de negocio
+│   └── server.ts         # Punto de entrada del servidor
+└── package.json          # Configuración principal del proyecto
+
 
 ## Instalación y Configuración
 
@@ -89,3 +91,4 @@ La prioridad se asignó basado en la dificultad de la tarea, y el tiempo que me 
 2. Mejorar la interfaz de usuario: añadir fotos de las ciudades para que sea más atractiva.
 
 3. Añadir un repositorio para poder fácilmente traer datos de los cuartos de una base de datos y/o de una API.
+```

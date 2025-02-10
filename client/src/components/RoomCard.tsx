@@ -1,3 +1,4 @@
+import { Amenities } from "../interfaces/Room";
 interface RoomCardProps {
   title: string;
   price: number;
@@ -11,12 +12,44 @@ export const RoomCard = ({
   amenities,
   rating,
 }: RoomCardProps) => {
-  const getAmenitiesText = () => {
-    if (amenities.length === 0) return "No amenities";
-    if (amenities.length === 1) return amenities[0];
-    const first = amenities.slice(0, 3);
-    const rest = amenities.slice(first.length);
-    return `${first.join(", ")} and ${rest.length} more`;
+  const getAmenityColor = (amenity: string) => {
+    switch (amenity) {
+      case Amenities.AIR_CONDITIONING_AND_HEATING:
+        return "bg-blue-500";
+      case Amenities.FREE_PARKING:
+        return "bg-green-500";
+      case Amenities.SECURITY_BOX:
+        return "bg-red-500";
+      case Amenities.BED_LINEN_INCLUDED:
+        return "bg-yellow-500";
+      case Amenities.WASHER_AND_DRYER:
+        return "bg-purple-500";
+      case Amenities.TV:
+        return "bg-orange-500";
+      case Amenities.WIFI:
+        return "bg-cyan-500";
+      case Amenities.EQUIPPED_KITCHEN:
+        return "bg-lime-500";
+      case Amenities.PRIVATE_BATHROOM:
+        return "bg-pink-500";
+      case Amenities.OUTDOOR_SPACE:
+        return "bg-teal-500";
+      default:
+        return "bg-gray-500";
+    }
+  };
+
+  const AmenityPill = ({ amenity }: { amenity: string }) => {
+    return (
+      <span
+        key={amenity}
+        className={`${getAmenityColor(
+          amenity
+        )} text-white px-2 py-.5 rounded-full`}
+      >
+        {amenity}
+      </span>
+    );
   };
 
   return (
@@ -37,7 +70,7 @@ export const RoomCard = ({
         </dl>
 
         <div className="mt-6 flex items-center gap-8 text-xs">
-          <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+          <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2 max-w-44">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -53,13 +86,13 @@ export const RoomCard = ({
             </svg>
 
             <div className="mt-1.5 sm:mt-0">
-              <p className="text-gray-500">Rating</p>
+              <p className="text-gray-500">Calificación</p>
 
               <p className="font-medium">{rating || "N/A"}</p>
             </div>
           </div>
 
-          <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+          <div className="flex">
             <svg
               className="size-4 text-indigo-700"
               xmlns="http://www.w3.org/2000/svg"
@@ -76,9 +109,15 @@ export const RoomCard = ({
             </svg>
 
             <div className="mt-1.5 sm:mt-0">
-              <p className="text-gray-500">Amenities</p>
+              <p className="text-gray-500">Amenidades</p>
 
-              {getAmenitiesText()}
+              <div className="flex flex-wrap gap-1">
+                {amenities.map((amenity) => (
+                  <span key={amenity}>
+                    <AmenityPill amenity={amenity} />
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

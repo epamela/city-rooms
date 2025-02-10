@@ -1,4 +1,4 @@
-import { Room } from "../../interfaces/Room";
+import { Amenities, Room } from "../../interfaces/Room";
 import { RoomRepository } from "./RoomRepository";
 import { parse } from "csv-parse/sync";
 import { readFileSync } from "fs";
@@ -75,7 +75,8 @@ export class CsvRoomRepository implements RoomRepository {
     orderBy?: string,
     priceMin?: number,
     priceMax?: number,
-    rating?: number
+    rating?: number,
+    amenities?: Amenities[]
   ): Promise<Room[]> {
     const cityLower = city.toLowerCase();
     let rooms = this.rooms.filter(
@@ -93,6 +94,18 @@ export class CsvRoomRepository implements RoomRepository {
     if (rating && rating > 0) {
       rooms = rooms.filter((room) => room.rating_overall! >= rating!);
     }
+
+    if (amenities && amenities.length > 0) {
+      rooms = rooms.filter((room) => {
+        const roomAmenities = room.amenities.map((amenity) =>
+          amenity.toLowerCase()
+        );
+        return amenities.every((amenity) =>
+          roomAmenities.includes(amenity.toLowerCase())
+        );
+      });
+    }
+
     return this.sortRooms(rooms, sortBy, orderBy);
   }
 }
