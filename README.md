@@ -41,7 +41,10 @@ cd city-rooms
 
 ```bash
 npm install
+npm run postinstall
 ```
+
+Alternativamente, entrar a cada carpeta y ejecutar `npm install`.
 
 3. Inicia la aplicación en modo de desarrollo:
 
@@ -90,7 +93,7 @@ La prioridad se asignó basado en la dificultad de la tarea, y el tiempo que me 
    - Autocompletar el código. Al escribir el código, la IA me sugería cómo continuar.
 
    - Generar tests. La IA me generó tests para los repositorios y servicios.
-     
+
 2. Documentación
    - Apoyo al redactar el READMI y generar la estructura del proyecto.
 
