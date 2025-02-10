@@ -230,7 +230,7 @@ export const Filters = ({
               amenities: [],
             })
           }
-          className=" bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500   text-white px-4 py-2 rounded-md w-full hover:cursor-pointer"
+          className=" bg-gray-500 text-sm text-white px-2 py-1 rounded-md w-full hover:cursor-pointer"
         >
           Limpiar todos los filtros
         </button>

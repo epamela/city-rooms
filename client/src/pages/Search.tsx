@@ -86,6 +86,9 @@ export function SearchPlaces() {
                 {loading ? "Buscando..." : "Buscar"}
               </Button>
             </div>
+            <p className="text-sm text-gray-500">
+              Rellena los filtros que necesites y da click en "Buscar"
+            </p>
             <Filters
               filters={filters}
               onFilterChange={(filters) => setFilters(filters)}
