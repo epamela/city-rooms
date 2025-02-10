@@ -106,3 +106,5 @@ La prioridad se asignó basado en la dificultad de la tarea, y el tiempo que me 
 3. Añadir un repositorio para poder fácilmente traer datos de los cuartos de una base de datos y/o de una API.
 
 4. Mejorar la responsividad de la aplicación.
+   
+5. Añadir paginación. De momento nuestras fuentes de datos no regresan mucho, pero no se podrá escalar sin paginación.
