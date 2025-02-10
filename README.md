@@ -33,7 +33,7 @@ city-rooms/
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/city-rooms.git
+git clone https://github.com/epamela/city-rooms.git
 cd city-rooms
 ```
 
@@ -79,7 +79,7 @@ La prioridad se asignó basado en la dificultad de la tarea, y el tiempo que me 
 
 ## Uso de IA en el Desarrollo
 
-1. ** Generación de código **
+1. Generación de código
 
    - Trabajo con la herramienta de Cursor que no sólo tiene sugerencias de autocompletar, sino que me permite generar archivos completos con la IA. Mi primer paso fue un prompt de "genera la estructura de repositorios para un proyecto full-stack que trabajará con dos interfaces, Room y Place. Room obtendrá datos de un archivo CSV y Place obtendrá datos desde una API. Se usará express para el servidor y Vite para el frontend, en ambas partes con typescript." Esto me permitió ahorrar tiempo en la creación de la estructura del proyecto, y sólo tuve que modificar algunas cosas para que el proyecto funcionara.
 
@@ -90,6 +90,9 @@ La prioridad se asignó basado en la dificultad de la tarea, y el tiempo que me 
    - Autocompletar el código. Al escribir el código, la IA me sugería cómo continuar.
 
    - Generar tests. La IA me generó tests para los repositorios y servicios.
+     
+2. Documentación
+   - Apoyo al redactar el READMI y generar la estructura del proyecto.
 
 # Futuras mejoras
 
