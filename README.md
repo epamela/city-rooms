@@ -74,9 +74,9 @@ La prioridad se asignó basado en la dificultad de la tarea, y el tiempo que me 
 
 2. Entendimiento del dataset y definición de la forma en la que iba a trabajar. Para este caso, primero hice un análisis de los datos para verificar la calidad de los datos y ver si era necesario limpiarlos. En este caso, los datos eran bastante limpios, por lo que no fue necesario. Se puede ver el corto análisis en el archivo `utils/RoomsExploration.ipynb`.
 
-3. Definición de el design pattern que iba a usar. En este caso, me decidí por el repositorio y el patrón de diseño de repositorio. Me decidí por un diseño de repositorios ya que me permite oportunidades de escalar fácilmente el proyecto, ya que un archivo CSV no es un formato óptimo y, mientras que permite usarlo para completar el proyecto, este diseño me permitirá escalar el proyecto a un futuro.
+3. Definición de el design pattern que iba a usar. En este caso, el patrón de diseño de repositorio. Me decidí por el mismo ya que me permite oportunidades de escalar fácilmente el proyecto, ya que un archivo CSV no es un formato óptimo y, mientras que permite usarlo para completar el proyecto, este diseño me permitirá escalar el proyecto a un futuro.
 
-4. Generación de código.
+4. Generación de código. Algo importante para mí en esta parte era no estar cargando el CSV para cada query, por lo que se guarda en la memoria. 
 
 5. Refactorización y testing.
 
@@ -106,3 +106,5 @@ La prioridad se asignó basado en la dificultad de la tarea, y el tiempo que me 
 3. Añadir un repositorio para poder fácilmente traer datos de los cuartos de una base de datos y/o de una API.
 
 4. Mejorar la responsividad de la aplicación.
+   
+5. Añadir paginación. De momento nuestras fuentes de datos no regresan mucho, pero no se podrá escalar sin paginación.
